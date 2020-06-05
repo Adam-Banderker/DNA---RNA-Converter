@@ -34,7 +34,7 @@ def translate(seq):
             codon = seq[i:i + 3]
             protein += table[codon]
     return protein
-translate(seq)
+
 
 def mutated():
     locate_a = seq.find('a')
