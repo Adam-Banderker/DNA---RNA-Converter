@@ -38,19 +38,19 @@ translate(seq)
 
 def mutated():
     locate_a = seq.find('a')
-    print(locate)
+    print(locate_a)
 
 
-mutation_DNA = open("mutatedDNA","w")
-mutation_DNA.write("mutated")
-mutation_DNA.close()
+mutation_file = open("mutatedDNA","w")
+mutation_file.write("mutated")
+mutation_file.close()
 
-normal_DNA = open("normalDNA","w")
-normal_DNA.write("normal")
-normal_DNA.close()
+nomal_file = open("normalDNA","w")
+nomal_file.write("normal")
+nomal_file.close()
 
-normal_DNA= seq.replace('a', 'A')
-mutation_DNA =seq.replace('a', 'T')
+nomal_file= seq.replace('a', 'A')
+mutation_file =seq.replace('a', 'T')
 
 while True:
     translate(seq)
