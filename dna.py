@@ -1,4 +1,4 @@
-inputfile ="DNA.txt" # Store the string into the variable name inputfile
+inputfile ="DNAFile.txt" # Store the string into the variable name inputfile
 f = open(inputfile, "r") #open DNA.txt to read data in dna.py file
 seq = f.read() # Read all of the contents of the file and store it in a variable called
 seq = seq.replace("\n", "") #replaces all newlines within the seq variable
@@ -7,7 +7,7 @@ seq = seq.replace("\r", "") #replaces all carriage return within the seq variabl
 
 
 
-def translate(seq):
+def translate(seq): # created a new function that translate dna sequence into amino acids
     table = {
         'ATA': 'I', 'ATC': 'I', 'ATT': 'I', 'ATG': 'M',
         'ACA': 'T', 'ACC': 'T', 'ACG': 'T', 'ACT': 'T',
@@ -25,32 +25,40 @@ def translate(seq):
         'TTC': 'F', 'TTT': 'F', 'TTA': 'L', 'TTG': 'L',
         'TAC': 'Y', 'TAT': 'Y', 'TAA': 'X', 'TAG': 'X',
         'TGC': 'C', 'TGT': 'C', 'TGA': 'X', 'TGG': 'W',
-    }
-    print(table['ATT'] + table['CTC'] + table['GTG'] + table['TTC'] + table['ATG'])
-    print(table['TAA'] + table['TGA'] + table['TAG'])
+    } #var table is assigned to a dictionary that consist of keys and value
+    # dictionaries are data structures are used to map arbitrary keys to value
+     # prints out the value of the keys. Printed out the values as out using the keys
+    print(table['ATA'])
+    print(table['CTC'])
+    print(table['GTG'])
+    print(table['TTC'])
+    print(table['ATG'])
+    print(table['TAA'] + table['TGA'] + table['TAG']) #these key were given the value of x
     protein = ""
-    if len(seq) % 3 == 0:
+    if len(seq) % 3 == 0: # if  3 can evenly go into the length of seq the retu
         for i in range(0, len(seq), 3):
             codon = seq[i:i + 3]
             protein += table[codon]
     return protein
 
 
-def mutated():
-    locate_a = seq.find('a')
+def mutated(): #function to read from file
+
+    locate_a = seq.find('a') # a var is assigned to the seq variable in order to find small letter "a"
     print(locate_a)
 
 
-mutation_file = open("mutatedDNA","w")
-mutation_file.write("mutated")
-mutation_file.close()
+mutation_file = open("mutatedDNA","w") # a variable is a assigned to the open function so that the file can be edited, 2 arguments are added which are the path and mode
+mutation_file.write("mutated") # this line writes a string to the file, we use the write method to write to file
+mutation_file.close() # once the file has been opened and used, the file will then close
 
 nomal_file = open("normalDNA","w")
 nomal_file.write("normal")
 nomal_file.close()
 
-nomal_file= seq.replace('a', 'A')
-mutation_file =seq.replace('a', 'T')
+nomal_file= seq.replace('a', 'A') # we assigned a variable to DNA.textfile so that we can replace small letter a with UPPER case A in when the normalDNA.text file is opened
+mutation_file =seq.replace('a', 'T') # we assigned a variable to DNA.textfile so that we can replace small letter a with UPPER case T when the mutatedDNA,text file is opened
+
 
 while True:
     translate(seq)
