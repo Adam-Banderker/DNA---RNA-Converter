@@ -35,7 +35,7 @@ def translate(seq): # created a new function that translate dna sequence into am
     print(table['ATG'])
     print(table['TAA'] + table['TGA'] + table['TAG']) #these key were given the value of x
     protein = ""
-    if len(seq) % 3 == 0: # if  3 can evenly go into the length of seq the retu
+    if len(seq) % 3 == 0: # if  3 can evenly go into the length of seq the return would be protein
         for i in range(0, len(seq), 3):
             codon = seq[i:i + 3]
             protein += table[codon]
