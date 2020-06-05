@@ -48,11 +48,11 @@ def mutated(): #function to read from file
     print(locate_a)
 
 
-mutation_file = open("mutatedDNA","w") # a variable is a assigned to the open function so that the file can be edited, 2 arguments are added which are the path and mode
+mutation_file = open("mutatedDNA.txt"w") # a variable is a assigned to the open function so that the file can be edited, 2 arguments are added which are the path and mode
 mutation_file.write("mutated") # this line writes a string to the file, we use the write method to write to file
 mutation_file.close() # once the file has been opened and used, the file will then close
 
-nomal_file = open("normalDNA","w")
+nomal_file = open("normalDNA.txt","w")
 nomal_file.write("normal")
 nomal_file.close()
 
