@@ -1,6 +1,6 @@
 inputfile ="DNAFile.txt" # Store the string into the variable name inputfile
 f = open(inputfile, "r") #open DNA.txt to read data in dna.py file
-seq = f.read() # Read all of the contents of the file and store it in a variable called
+seq = f.read() # Read all of the contents of the file and store it in a variable called seq
 seq = seq.replace("\n", "") #replaces all newlines within the seq variable
 seq = seq.replace("\r", "") #replaces all carriage return within the seq variable
 
@@ -25,44 +25,44 @@ def translate(seq): # created a new function that translate dna sequence into am
         'TTC': 'F', 'TTT': 'F', 'TTA': 'L', 'TTG': 'L',
         'TAC': 'Y', 'TAT': 'Y', 'TAA': 'X', 'TAG': 'X',
         'TGC': 'C', 'TGT': 'C', 'TGA': 'X', 'TGG': 'W',
-    } #var table is assigned to a dictionary that consist of keys and value
+    } #a dictionary that consist of keys and value is assigned to a varaible called Table
     # dictionaries are data structures are used to map arbitrary keys to value
-     # prints out the value of the keys. Printed out the values as out using the keys
-    print(table['ATA'])
-    print(table['CTC'])
-    print(table['GTG'])
-    print(table['TTC'])
-    print(table['ATG'])
-    print(table['TAA'] + table['TGA'] + table['TAG']) #these key were given the value of x
+     # prints out the value of the keys. Printed out the values as output using the keys
+    name = input("Please enter your DNA sequence in CAPITAL letters:")
+    print(table[name])#these key were given the value of x
     protein = ""
-    if len(seq) % 3 == 0: # if  3 can evenly go into the length of seq the return would be protein
-        for i in range(0, len(seq), 3):
-            codon = seq[i:i + 3]
+    if len(table) % 3 == 0: # if  3 can evenly go into the length of seq the return would be protein
+        for i in range(0, len(table), 3): # the range function generated a list containing from 0, the number of items of that list up to 3
+            codon = table[i:i + 3]
             protein += table[codon]
     return protein
 
 
 def mutated(): #function to read from file
 
-    locate_a = seq.find('a') # a var is assigned to the seq variable in order to find small letter "a"
+    #purpose of this function is to read data from the DNA file and create 2 new files to replace small "a"s with capital "A' and "T"
+
+    f = open("DNAFile.txt", "r") # so here we have a variable that has data to open the DNAfile
+    seq = f.read() # we then store data in variable to read the date
+
+    locate_a = seq.find('a')  # create a variable that contains data to find all letter "a" within the file
     print(locate_a)
 
+    mutation_file = open("mutatedDNA.txt","w") # a new variable created to store open a file and to use the write mode within it
+    mutation_file.write(seq.replace("a","T")) # this line targets the file that is opened and replaces strings within it.
+    mutation_file.close() # once the file has been opened and used, the file will then close
 
-mutation_file = open("mutatedDNA.txt"w") # a variable is a assigned to the open function so that the file can be edited, 2 arguments are added which are the path and mode
-mutation_file.write("mutated") # this line writes a string to the file, we use the write method to write to file
-mutation_file.close() # once the file has been opened and used, the file will then close
-
-nomal_file = open("normalDNA.txt","w")
-nomal_file.write("normal")
-nomal_file.close()
-
-nomal_file= seq.replace('a', 'A') # we assigned a variable to DNA.textfile so that we can replace small letter a with UPPER case A in when the normalDNA.text file is opened
-mutation_file =seq.replace('a', 'T') # we assigned a variable to DNA.textfile so that we can replace small letter a with UPPER case T when the mutatedDNA,text file is opened
-
+    normal_file = open("normalDNA.txt","w")
+    normal_file.write(seq.replace("a", "A"))
+    normal_file.close()
 
 while True:
     translate(seq)
+    mutated()
     break
+
+#parameter comes at the declaration of the function ( consist of either a string or variable)
+#argument is the value supplied to a parameter
 
 
 
